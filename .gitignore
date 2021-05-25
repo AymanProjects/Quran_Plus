@@ -117,6 +117,5 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 
 /android/app/google-services.json
-/assets/
 /local
 /local.properties
