@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
@@ -15,7 +16,7 @@ void main() async {
     // Make sure the parent directory exists
 
     // Copy from asset
-    ByteData data = await rootBundle.load("assets/othmanDB.db");
+    ByteData data = await rootBundle.load("assets/OthmanApp.db");
     List<int> bytes =
         data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     await new File(path).writeAsBytes(bytes, flush: true);
@@ -24,8 +25,9 @@ void main() async {
     var db = await openDatabase(
       path,
       readOnly: true,
-      onOpen: (db)async {
-        print(await db.rawQuery('SELECT COUNT(*) FROM verses'));
+      onOpen: (db) async {
+        print(await db.rawQuery(
+            'SELECT verse FROM verses where verseNumber=1 AND suraNumber=2'));
       },
     );
   } catch (e) {
