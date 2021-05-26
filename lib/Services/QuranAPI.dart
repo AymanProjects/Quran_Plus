@@ -1,3 +1,4 @@
+import 'package:othman/models/Verse.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
@@ -24,10 +25,20 @@ class QuranAPI {
     } catch (e) {
       print(e.toString());
     }
+    print((await getVersesOfSura(2))[200].verse.toString());
   }
 
-  List<Ver> getVersesOfSura(int suraNumber){
+  
 
+  static Future<List<Verse>> getVersesOfSura(int suraNumber) async {
+    List<Map> rawVerses =
+        await db.rawQuery('select * from verses where suraNumber=$suraNumber;');
+    List<Verse> verses = [];
+    for (int i = 0; i < rawVerses.length; i++) {
+      verses.add(Verse.fromJson(rawVerses[i]));
+    }
+    return verses;
   }
+
 
 }

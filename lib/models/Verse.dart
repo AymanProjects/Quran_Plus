@@ -15,7 +15,7 @@ class Verse {
       this.verse,
       this.tafseer});
 
-  Verse fromJson(Map json) {
+  factory Verse.fromJson(Map json) {
     if (json == null) return Verse();
     return new Verse(
       verseNumber: json['verseNumber'],
