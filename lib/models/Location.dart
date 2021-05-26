@@ -4,7 +4,7 @@ class Location {
 
   Location({this.id, this.name});
 
-  Location fromJson(Map json) {
+  factory Location.fromJson(Map json) {
     if (json == null) return Location();
     return new Location(
       id: json['ID'],

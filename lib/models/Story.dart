@@ -5,7 +5,7 @@ class Story {
 
   Story({this.id, this.name, this.fullStory});
 
-  Story fromJson(Map json) {
+  factory Story.fromJson(Map json) {
     if (json == null) return Story();
     return new Story(
         id: json['ID'], name: json['name'], fullStory: json['fullStory']);

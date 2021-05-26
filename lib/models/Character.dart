@@ -5,13 +5,12 @@ class Character {
 
   Character({this.id, this.name, this.about});
 
-  Character fromJson(Map json){
+  factory Character.fromJson(Map json) {
     if (json == null) return Character();
     return new Character(
       id: json['ID'],
       name: json['name'],
-      about : json['about'],
+      about: json['about'],
     );
   }
-
 }
