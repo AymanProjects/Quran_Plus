@@ -1,38 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:othman/Services/QuranAPI.dart';
+
 
 void main() async {
   WidgetsFlutterBinding();
-
-  try {
-    var databasesPath = await getDatabasesPath();
-    var path = '$databasesPath/test.db';
-    // delete existing if any
-    await deleteDatabase(path);
-    // Make sure the parent directory exists
-
-    // Copy from asset
-    ByteData data = await rootBundle.load("assets/OthmanApp.db");
-    List<int> bytes =
-        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-    await new File(path).writeAsBytes(bytes, flush: true);
-
-    // open the database
-    var db = await openDatabase(
-      path,
-      readOnly: true,
-      onOpen: (db) async {
-        print(await db.rawQuery(
-            'SELECT verse FROM verses where verseNumber=1 AND suraNumber=2'));
-      },
-    );
-  } catch (e) {
-    print(e.toString());
-  }
+  await QuranAPI.init();
   runApp(MyApp());
 }
 
