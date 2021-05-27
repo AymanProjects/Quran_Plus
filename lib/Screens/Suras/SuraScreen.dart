@@ -11,13 +11,15 @@ class SuraScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Container(
-        width: double.infinity,
-        child: Text(
+        actions: [
+          IconButton(icon: Icon(Icons.add_moderator), onPressed: () {})
+        ],
+        centerTitle: true,
+        title: Text(
           sura.name,
           textDirection: TextDirection.rtl,
         ),
-      )),
+      ),
       body: FutureBuilder(
         future: QuranAPI.getAllVersesOfSura(sura.number),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {

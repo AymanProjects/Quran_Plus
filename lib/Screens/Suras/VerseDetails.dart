@@ -113,7 +113,7 @@ void showVerseDetails(BuildContext context, Verse verse) {
                         thickness: 1,
                       ),
                       Text(
-                        "مكان نزول الآية",
+                        "اماكن ذكرت في الآية",
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           color: Colors.white,
