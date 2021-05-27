@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:othman/Screens/Sura/SuraScreen.dart';
+import 'package:othman/Screens/Suras/SuraScreen.dart';
 import 'package:othman/models/Sura.dart';
 
 class SuraTile extends StatelessWidget {

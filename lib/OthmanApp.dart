@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:othman/Screens/Sura/AllSurasScreen.dart';
+import 'package:othman/Screens/Characters/AllCharactersScreen.dart';
+import 'package:othman/Screens/Suras/AllSurasScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class OthmanApp extends StatelessWidget {
@@ -19,9 +20,7 @@ class OthmanApp extends StatelessWidget {
           ),
           screens: [
             AllSurasScreen(),
-            Container(
-              color: Colors.red,
-            ),
+            AllCharactersScreen(),
             Container(
               color: Colors.blue,
             ),
