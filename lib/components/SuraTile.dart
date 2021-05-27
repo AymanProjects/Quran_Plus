@@ -30,7 +30,7 @@ class SuraTile extends StatelessWidget {
         ),
         subtitle: Row(
           children: [
-            GestureDetector(
+            InkWell(
               onTap: () {
                 showSuraDetails(context, sura);
               },

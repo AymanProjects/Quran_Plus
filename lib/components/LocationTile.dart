@@ -26,7 +26,7 @@ class LocationTile extends StatelessWidget {
           trailing: Icon(
             Icons.home_work_sharp,
             color: Colors.white,
-            size: 17,
+            size: 18,
           ),
           title: Row(
             children: [
@@ -34,7 +34,7 @@ class LocationTile extends StatelessWidget {
               Text(
                 location.name,
                 textDirection: TextDirection.rtl,
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                style: TextStyle(color: Colors.white, fontSize: 18),
               ),
             ],
           ),

@@ -13,11 +13,16 @@ class SuraScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-              icon: Icon(Icons.info_outline_rounded),
-              onPressed: () {
-                showSuraDetails(context, sura);
-              })
+          Builder(
+            builder: (context) {
+              return IconButton(
+                icon: Icon(Icons.info_outline_rounded),
+                onPressed: () {
+                  showSuraDetails(context, sura);
+                },
+              );
+            },
+          ),
         ],
         centerTitle: true,
         title: Text(
