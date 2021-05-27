@@ -24,13 +24,13 @@ class QuranAPI {
       await new File(path).writeAsBytes(bytes, flush: true);
       // open the database
       db = await openDatabase(path, readOnly: true, onOpen: (db) async {
-        print(await db.rawQuery("PRAGMA table_info(suras);"));
+        //   print(await db.rawQuery("PRAGMA table_info(suras);"));
       });
     } catch (e) {
       print(e.toString());
     }
 
-    print((await getCharactersOfSura(2)).toString());
+    //  print((await getCharactersOfSura(2)).toString());
 
     // print((await getAllVersesOfSura(2))[200].verse.toString());
   }
@@ -92,5 +92,49 @@ class QuranAPI {
       verses.add(Verse.fromJson(rawVerses[i]));
     }
     return verses;
+  }
+
+  static Future<List<Character>> getCharactersOfVerse(
+      int suraNumber, int verseNumber) async {
+    String query =
+        'select * from characters,verseCharacter where verseCharacter.verseNumber=$verseNumber AND verseCharacter.suraNumber=$suraNumber AND verseCharacter.characterID=characters.ID';
+    // String query = "select * from characters";
+
+    List<Map> json = await db.rawQuery(query);
+
+    List<Character> characters = [];
+    for (int i = 0; i < json.length; i++) {
+      characters.add(Character.fromJson(json[i]));
+    }
+
+    return characters;
+  }
+
+  static Future<List<Location>> getLocationOfVerse(
+      int suraNumber, int verseNumber) async {
+    String query =
+        'select * from locations,verses where locations.ID=verses.locationID AND verseNumber=$verseNumber AND suraNumber=$suraNumber;';
+    // String query = 'select * from locations';
+    List<Map> json = await db.rawQuery(query);
+    List<Location> locations = [];
+    for (int i = 0; i < json.length; i++) {
+      locations.add(Location.fromJson(json[i]));
+    }
+
+    return locations;
+  }
+
+  static Future<List<Story>> getStoryOfVerse(
+      int suraNumber, int verseNumber) async {
+    String query =
+        'select * from stories,verses where stories.ID=verses.storyID AND verseNumber=$verseNumber AND suraNumber=$suraNumber;';
+    // 'select * from characters,verseCharacters,verses where characterID in (select characterID from verseCharacter where suraNumber=$suraNumber;)';
+    List<Map> json = await db.rawQuery(query);
+    List<Story> stories = [];
+    for (int i = 0; i < json.length; i++) {
+      stories.add(Story.fromJson(json[i]));
+    }
+
+    return stories;
   }
 }

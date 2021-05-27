@@ -7,8 +7,9 @@ class OthmanApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.indigo,
       ),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: PersistentTabView(
           context,
@@ -18,22 +19,28 @@ class OthmanApp extends StatelessWidget {
           ),
           screens: [
             AllSurasScreen(),
-            AllSurasScreen(),
+            Container(
+              color: Colors.red,
+            ),
+            Container(
+              color: Colors.blue,
+            ),
           ],
           items: [
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.home),
-              title: "Home",
-              activeColorPrimary: Colors.blue,
+              icon: Icon(Icons.local_library_outlined),
+              title: "السور",
               inactiveColorPrimary: Colors.grey,
-              inactiveColorSecondary: Colors.purple,
             ),
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.home),
-              title: "Home",
-              activeColorPrimary: Colors.blue,
+              icon: Icon(Icons.person),
+              title: "الشخصيات",
               inactiveColorPrimary: Colors.grey,
-              inactiveColorSecondary: Colors.purple,
+            ),
+            PersistentBottomNavBarItem(
+              icon: Icon(Icons.home_work_rounded),
+              title: "الأماكن",
+              inactiveColorPrimary: Colors.grey,
             ),
           ],
         ),

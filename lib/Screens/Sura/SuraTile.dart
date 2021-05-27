@@ -12,9 +12,14 @@ class SuraTile extends StatelessWidget {
         onTap(context);
       },
       child: ListTile(
-        tileColor: Colors.amberAccent,
+        tileColor: Colors.indigoAccent.withOpacity(0.3),
         title: Row(
           children: [
+            Text(
+              'رقم السورة: ${sura.number}',
+              textDirection: TextDirection.rtl,
+              style: TextStyle(fontSize: 13),
+            ),
             Spacer(),
             Text(
               sura.name,

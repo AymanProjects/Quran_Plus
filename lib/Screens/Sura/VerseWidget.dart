@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:othman/models/Verse.dart';
+import 'package:othman/models/VerseDetails.dart';
 import 'package:quran/quran.dart';
-import 'package:stopper/stopper.dart';
 
 class VerseWidget extends StatelessWidget {
   final Verse verse;
@@ -35,20 +35,6 @@ class VerseWidget extends StatelessWidget {
   }
 
   void onVerseTap(context) {
-    showStopper(
-        context: context,
-        stops: [400, 400],
-        builder: (context, scrollController, scrollPhysics, stop) {
-          return Container(
-            color: Colors.pink,
-            child: ListView(
-              controller: scrollController,
-              physics: scrollPhysics,
-              children: [
-                Text('ss'),
-              ],
-            ),
-          );
-        });
+    showVerseDetails(context, verse);
   }
 }
