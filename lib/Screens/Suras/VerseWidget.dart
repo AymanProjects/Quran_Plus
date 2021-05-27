@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:othman/models/Sura.dart';
-import 'package:othman/models/Verse.dart';
 import 'package:othman/Screens/Suras/VerseDetails.dart';
+import 'package:othman/models/Verse.dart';
 import 'package:quran/quran.dart';
 
 class VerseWidget extends StatelessWidget {
   final Verse verse;
-  VerseWidget({@required this.verse});
+  final double fontSize;
+  VerseWidget({@required this.verse, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class VerseWidget extends StatelessWidget {
         textDirection: TextDirection.rtl,
         style: TextStyle(
           color: Colors.black,
-          fontSize: 30,
+          fontSize: fontSize ?? 23,
         ),
       ),
     );

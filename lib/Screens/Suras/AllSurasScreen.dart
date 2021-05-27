@@ -3,7 +3,7 @@ import 'package:othman/Services/QuranAPI.dart';
 import 'package:othman/components/SearchBar.dart';
 import 'package:othman/models/Sura.dart';
 
-import 'SuraTile.dart';
+import '../../components/SuraTile.dart';
 
 class AllSurasScreen extends StatefulWidget {
   @override

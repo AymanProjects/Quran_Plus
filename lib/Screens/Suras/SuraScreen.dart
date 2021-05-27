@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:othman/Screens/Suras/SuraDetails.dart';
 import 'package:othman/Screens/Suras/VerseWidget.dart';
 import 'package:othman/Services/QuranAPI.dart';
 import 'package:othman/models/Sura.dart';
@@ -12,7 +13,11 @@ class SuraScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(icon: Icon(Icons.add_moderator), onPressed: () {})
+          IconButton(
+              icon: Icon(Icons.info_outline_rounded),
+              onPressed: () {
+                showSuraDetails(context, sura);
+              })
         ],
         centerTitle: true,
         title: Text(
@@ -37,7 +42,10 @@ class SuraScreen extends StatelessWidget {
               },
               itemCount: verses.length,
               itemBuilder: (context, index) {
-                return VerseWidget(verse: verses[index]);
+                return VerseWidget(
+                  verse: verses[index],
+                  fontSize: 30,
+                );
               },
             );
           }

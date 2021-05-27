@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:othman/Screens/Characters/AllCharactersScreen.dart';
+import 'package:othman/Screens/Locations/AllLocationsScreen.dart';
 import 'package:othman/Screens/Suras/AllSurasScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -21,9 +22,7 @@ class OthmanApp extends StatelessWidget {
           screens: [
             AllSurasScreen(),
             AllCharactersScreen(),
-            Container(
-              color: Colors.blue,
-            ),
+            AllLocationsScreen()
           ],
           items: [
             PersistentBottomNavBarItem(

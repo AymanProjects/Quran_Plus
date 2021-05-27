@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:othman/Services/QuranAPI.dart';
 import 'package:othman/components/CharacterTile.dart';
+import 'package:othman/components/LocationTile.dart';
 import 'package:othman/models/Character.dart';
 import 'package:othman/models/Sura.dart';
 import 'package:quran/quran.dart';
@@ -130,7 +131,8 @@ void showVerseDetails(BuildContext context, Verse verse) {
                             if (locations.isNotEmpty)
                               return Column(
                                 children: locations.map((Location c) {
-                                  return Text(c.name);
+                                  return LocationTile(c);
+                                  // return Text("hi");
                                 }).toList(),
                               );
                             else

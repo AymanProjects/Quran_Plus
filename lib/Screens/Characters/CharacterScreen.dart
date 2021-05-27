@@ -4,6 +4,7 @@ import 'package:othman/Services/QuranAPI.dart';
 import 'package:othman/components/EpicDivider.dart';
 import 'package:othman/models/Character.dart';
 import 'package:othman/models/Story.dart';
+import 'package:othman/models/Sura.dart';
 import 'package:othman/models/Verse.dart';
 
 class CharacterScreen extends StatelessWidget {
@@ -47,7 +48,32 @@ class CharacterScreen extends StatelessWidget {
                   },
                   itemCount: verses.length,
                   itemBuilder: (context, index) {
-                    return VerseWidget(verse: verses[index]);
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        FutureBuilder<Sura>(
+                          future: QuranAPI.getSura(verses[index].suraNumber),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(
+                                "${snapshot.data.name}",
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 35,
+                                ),
+                              );
+                            }
+                            return CircularProgressIndicator();
+                          },
+                        ),
+                        VerseWidget(
+                          verse: verses[index],
+                        ),
+                      ],
+                    );
                   },
                 );
               }

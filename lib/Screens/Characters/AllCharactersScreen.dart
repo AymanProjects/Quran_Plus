@@ -17,7 +17,7 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
 
   double height;
 
-  void loadSuras() async {
+  void loadCharacters() async {
     await QuranAPI.getAllCharacters().then((value) {
       allCharacters = value;
       setState(() {
@@ -29,7 +29,7 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
   @override
   void initState() {
     super.initState();
-    loadSuras();
+    loadCharacters();
   }
 
   @override
