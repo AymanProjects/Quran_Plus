@@ -64,7 +64,7 @@ void showVerseDetails(BuildContext context, Verse verse) {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8),
+                              padding: const EdgeInsets.only(top: 20),
                               child: Text(
                                 snapshot.data.name,
                                 textDirection: TextDirection.rtl,
@@ -159,7 +159,7 @@ void showVerseDetails(BuildContext context, Verse verse) {
                           });
                         },
                         child: Icon(
-                          Icons.event,
+                          Icons.bookmark_rounded,
                           color: pageSelected == 3
                               ? Colors.white.withOpacity(1)
                               : Colors.white.withOpacity(0.45),
@@ -383,7 +383,7 @@ void showVerseDetails(BuildContext context, Verse verse) {
                                       width: 5,
                                     ),
                                     Icon(
-                                      Icons.event,
+                                      Icons.bookmark_rounded,
                                       color: Colors.white,
                                     ),
                                   ],

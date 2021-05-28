@@ -92,39 +92,44 @@ class _StoryScreenState extends State<StoryScreen> {
                           spreadRadius: 20,
                         )
                       ]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                if (charactersMaxLines == 5)
-                                  charactersMaxLines = 1000;
-                                else
-                                  charactersMaxLines = 5;
-                              });
-                            },
-                            icon: Icon(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (charactersMaxLines == 5)
+                              charactersMaxLines = 1000;
+                            else
+                              charactersMaxLines = 5;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
                               charactersMaxLines == 5
                                   ? Icons.arrow_circle_down_rounded
                                   : Icons.arrow_circle_up_rounded,
                               size: 30,
                               color: Theme.of(context).primaryColor,
                             ),
-                          ),
-                          charactersMaxLines == 5
-                              ? Padding(
-                                  padding: const EdgeInsets.only(top: 3.0),
-                                  child: Text(
-                                    "اقرأ المزيد",
-                                    style: TextStyle(
-                                        fontSize: 19,
-                                        color: Theme.of(context).primaryColor),
-                                  ),
-                                )
-                              : Container(),
-                        ],
+                            SizedBox(width: 5),
+                            charactersMaxLines == 5
+                                ? Padding(
+                                    padding: const EdgeInsets.only(top: 3.0),
+                                    child: Text(
+                                      "اقرأ المزيد",
+                                      style: TextStyle(
+                                          fontSize: 19,
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                  )
+                                : Container(),
+                          ],
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Divider(
                       thickness: 1,
@@ -202,14 +207,10 @@ class _StoryScreenState extends State<StoryScreen> {
                         return CircularProgressIndicator();
                       },
                     ),
-                    Divider(
-                      thickness: 1,
-                      height: 25,
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
                   ],
+                ),
+                SizedBox(
+                  height: 80,
                 ),
               ],
             ),

@@ -110,15 +110,8 @@ class LocationScreen extends StatelessWidget {
                     return CircularProgressIndicator();
                   },
                 ),
-                Divider(
-                  thickness: 1,
-                  height: 25,
-                ),
                 SizedBox(
-                  height: 6,
-                ),
-                SizedBox(
-                  height: 50,
+                  height: 80,
                 ),
               ],
             ),
