@@ -31,41 +31,52 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          width: double.infinity,
-          child: Text('جميع الشخصيات', textDirection: TextDirection.rtl),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            SearchBar(
-              hint: "اسم الشخصية",
-              onChange: (value) {
-                setState(() {
-                  if (value.isEmpty) {
-                    characters = allCharacters;
-                  } else
-                    characters = allCharacters
-                        .where((sura) => sura.name.contains(value))
-                        .toList();
-                });
-              },
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                children: characters.map((Character character) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: CharacterTile(character: character),
-                  );
-                }).toList(),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'جميع الشخصيات',
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColorDark,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              SearchBar(
+                hint: "اسم الشخصية",
+                onChange: (value) {
+                  setState(() {
+                    if (value.isEmpty) {
+                      characters = allCharacters;
+                    } else
+                      characters = allCharacters
+                          .where((sura) => sura.name.contains(value))
+                          .toList();
+                  });
+                },
+              ),
+              SizedBox(height: 15),
+              Expanded(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  children: characters.map((Character character) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: CharacterTile(character: character),
+                    );
+                  }).toList(),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

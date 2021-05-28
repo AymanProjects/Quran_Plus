@@ -9,32 +9,53 @@ class StoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return StoryScreen(story);
-          },
-        ));
-      },
-      child: Card(
-        color: Colors.white.withOpacity(0.01),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
-        ),
-        child: ListTile(
-          trailing: Icon(
-            Icons.book_online,
-            color: Colors.white,
-            size: 18,
+    return Card(
+      color: Theme.of(context).primaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return StoryScreen(story);
+            },
+          ));
+        },
+        child: Container(
+          padding: EdgeInsets.all(10),
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Theme.of(context).primaryColor,
+                Theme.of(context).primaryColorDark,
+              ],
+            ),
           ),
-          title: Row(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Spacer(),
-              Text(
-                story.name,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  'قصة ' + story.name,
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              SizedBox(width: 8),
+              Icon(
+                Icons.bookmark_rounded,
+                color: Colors.white,
+                size: 24,
               ),
             ],
           ),

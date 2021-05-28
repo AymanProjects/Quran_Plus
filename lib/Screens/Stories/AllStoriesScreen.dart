@@ -32,41 +32,52 @@ class _AllStoriesScreenState extends State<AllStoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          width: double.infinity,
-          child: Text('جميع الاحداث', textDirection: TextDirection.rtl),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            SearchBar(
-              hint: "اسم الحدث",
-              onChange: (value) {
-                setState(() {
-                  if (value.isEmpty) {
-                    stories = allStories;
-                  } else
-                    stories = allStories
-                        .where((location) => location.name.contains(value))
-                        .toList();
-                });
-              },
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                children: stories.map((Story story) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: StoryTile(story),
-                  );
-                }).toList(),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'جميع القصص',
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColorDark,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              SearchBar(
+                hint: "اسم القصة",
+                onChange: (value) {
+                  setState(() {
+                    if (value.isEmpty) {
+                      stories = allStories;
+                    } else
+                      stories = allStories
+                          .where((location) => location.name.contains(value))
+                          .toList();
+                  });
+                },
+              ),
+              SizedBox(height: 15),
+              Expanded(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  children: stories.map((Story story) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: StoryTile(story),
+                    );
+                  }).toList(),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

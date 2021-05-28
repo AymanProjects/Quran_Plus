@@ -21,6 +21,8 @@ class OthmanApp extends StatelessWidget {
       child: Scaffold(
         body: PersistentTabView(
           context,
+          navBarHeight: 60,
+          bottomScreenMargin: 0,
           navBarStyle: NavBarStyle.style6,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           itemAnimationProperties: ItemAnimationProperties(
@@ -34,26 +36,22 @@ class OthmanApp extends StatelessWidget {
           ],
           items: [
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.menu_book_sharp),
-              title: "السور",
+              icon: Icon(Icons.menu_book_rounded),
               activeColorPrimary: Theme.of(context).primaryColorDark,
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
               icon: Icon(Icons.person),
-              title: "الشخصيات",
               activeColorPrimary: Theme.of(context).primaryColorDark,
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
               icon: Icon(Icons.location_on_rounded),
-              title: "الأماكن",
               activeColorPrimary: Theme.of(context).primaryColorDark,
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.event_sharp),
-              title: "الاحداث",
+              icon: Icon(Icons.bookmark_rounded),
               activeColorPrimary: Theme.of(context).primaryColorDark,
               inactiveColorPrimary: Colors.grey,
             ),

@@ -14,7 +14,6 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
   List<Sura> allSuras = [];
   List<Sura> suras = [];
 
-
   void loadSuras() async {
     await QuranAPI.getAllSuras().then((value) {
       allSuras = value;
@@ -35,7 +34,7 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -62,6 +61,7 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
                   });
                 },
               ),
+              SizedBox(height: 10),
               Expanded(
                 child: ListView.separated(
                   physics: BouncingScrollPhysics(),

@@ -31,41 +31,52 @@ class _AllLocationsScreenState extends State<AllLocationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          width: double.infinity,
-          child: Text('جميع الأماكن', textDirection: TextDirection.rtl),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            SearchBar(
-              hint: "اسم المكان",
-              onChange: (value) {
-                setState(() {
-                  if (value.isEmpty) {
-                    locations = allLocations;
-                  } else
-                    locations = allLocations
-                        .where((location) => location.name.contains(value))
-                        .toList();
-                });
-              },
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                children: locations.map((Location location) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: LocationTile(location),
-                  );
-                }).toList(),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'جميع الأماكن',
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColorDark,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              SearchBar(
+                hint: "اسم المكان",
+                onChange: (value) {
+                  setState(() {
+                    if (value.isEmpty) {
+                      locations = allLocations;
+                    } else
+                      locations = allLocations
+                          .where((location) => location.name.contains(value))
+                          .toList();
+                  });
+                },
+              ),
+              SizedBox(height: 15),
+              Expanded(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  children: locations.map((Location location) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: LocationTile(location),
+                    );
+                  }).toList(),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
