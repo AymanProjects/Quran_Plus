@@ -80,10 +80,7 @@ void showSuraDetails(BuildContext context, Sura sura) {
                         )
                       ],
                     ),
-                    Divider(
-                      thickness: 1,
-                      height: 25,
-                    ),
+                    SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -156,6 +153,7 @@ void showSuraDetails(BuildContext context, Sura sura) {
                       height: 25,
                     ),
                     Container(
+                      padding: EdgeInsets.only(top: 10),
                       height: MediaQuery.of(context).size.height * 0.7,
                       child: PageView(
                         controller: pg,
@@ -166,96 +164,93 @@ void showSuraDetails(BuildContext context, Sura sura) {
                         },
                         children: [
                           SingleChildScrollView(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 25),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 5),
-                                        child: Text(
-                                          "سبب النزول",
-                                          textDirection: TextDirection.rtl,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                          ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text(
+                                        "سبب النزول",
+                                        textDirection: TextDirection.rtl,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Icon(
-                                        Icons.chrome_reader_mode,
-                                        color: Colors.white,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    sura.reason ?? "لا يوجد",
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white),
-                                  )
-                                ],
-                              ),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Icon(
+                                      Icons.chrome_reader_mode,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  sura.reason ?? "لا يوجد",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.white),
+                                )
+                              ],
                             ),
                           ),
                           SingleChildScrollView(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 25),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 5),
-                                        child: Text(
-                                          "الشخصيات المذكورة ",
-                                          textDirection: TextDirection.rtl,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                          ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text(
+                                        "الشخصيات المذكورة ",
+                                        textDirection: TextDirection.rtl,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Icon(
-                                        Icons.person,
-                                        color: Colors.white,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  FutureBuilder(
-                                    future: QuranAPI.getAllCharactersOfSura(
-                                        sura.number),
-                                    builder: (BuildContext context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        List<Character> characters =
-                                            snapshot.data;
-                                        if (characters.isNotEmpty)
-                                          return Column(
-                                            children: characters
-                                                .map((Character char) {
-                                              return EpicTile(
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                FutureBuilder(
+                                  future: QuranAPI.getAllCharactersOfSura(
+                                      sura.number),
+                                  builder: (BuildContext context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      List<Character> characters =
+                                          snapshot.data;
+                                      if (characters.isNotEmpty)
+                                        return Column(
+                                          children:
+                                              characters.map((Character char) {
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5),
+                                              child: EpicTile(
                                                 Icons.person,
                                                 title: char.name,
                                                 color: Colors.white,
@@ -269,71 +264,70 @@ void showSuraDetails(BuildContext context, Sura sura) {
                                                     },
                                                   ));
                                                 },
-                                              );
-                                            }).toList(),
-                                          );
-                                        else
-                                          return Text(
-                                            "لا يوجد",
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.white),
-                                          );
-                                      }
-                                      return CircularProgressIndicator();
-                                    },
-                                  ),
-                                ],
-                              ),
+                                              ),
+                                            );
+                                          }).toList(),
+                                        );
+                                      else
+                                        return Text(
+                                          "لا يوجد",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        );
+                                    }
+                                    return CircularProgressIndicator();
+                                  },
+                                ),
+                              ],
                             ),
                           ),
                           SingleChildScrollView(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 25),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 5),
-                                        child: Text(
-                                          "الأماكن المذكورة في السورة",
-                                          textDirection: TextDirection.rtl,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                          ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text(
+                                        "الأماكن المذكورة في السورة",
+                                        textDirection: TextDirection.rtl,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Icon(
-                                        Icons.location_on_rounded,
-                                        color: Colors.white,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  FutureBuilder(
-                                    future: QuranAPI.getAllLocationsOfSura(
-                                        sura.number),
-                                    builder: (BuildContext context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        List<Location> locations =
-                                            snapshot.data;
-                                        if (locations.isNotEmpty)
-                                          return Column(
-                                            children:
-                                                locations.map((Location c) {
-                                              return EpicTile(
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Icon(
+                                      Icons.location_on_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                FutureBuilder(
+                                  future: QuranAPI.getAllLocationsOfSura(
+                                      sura.number),
+                                  builder: (BuildContext context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      List<Location> locations = snapshot.data;
+                                      if (locations.isNotEmpty)
+                                        return Column(
+                                          children: locations.map((Location c) {
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5),
+                                              child: EpicTile(
                                                 Icons.location_on_rounded,
                                                 title: c.name,
                                                 color: Colors.white,
@@ -345,29 +339,28 @@ void showSuraDetails(BuildContext context, Sura sura) {
                                                     },
                                                   ));
                                                 },
-                                              );
-                                              // return Text("hi");
-                                            }).toList(),
-                                          );
-                                        else
-                                          return Text(
-                                            "لا يوجد",
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.white),
-                                          );
-                                      }
-                                      return CircularProgressIndicator();
-                                    },
-                                  ),
-                                ],
-                              ),
+                                              ),
+                                            );
+                                            // return Text("hi");
+                                          }).toList(),
+                                        );
+                                      else
+                                        return Text(
+                                          "لا يوجد",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white),
+                                        );
+                                    }
+                                    return CircularProgressIndicator();
+                                  },
+                                ),
+                              ],
                             ),
                           ),
                           SingleChildScrollView(
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 25),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
@@ -408,18 +401,23 @@ void showSuraDetails(BuildContext context, Sura sura) {
                                         if (story.isNotEmpty)
                                           return Column(
                                             children: story.map((Story s) {
-                                              return EpicTile(
-                                                Icons.bookmark,
-                                                title: s.name,
-                                                color: Colors.white,
-                                                onClick: () {
-                                                  Navigator.push(context,
-                                                      MaterialPageRoute(
-                                                    builder: (context) {
-                                                      return StoryScreen(s);
-                                                    },
-                                                  ));
-                                                },
+                                              return Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 5),
+                                                child: EpicTile(
+                                                  Icons.bookmark,
+                                                  title: s.name,
+                                                  color: Colors.white,
+                                                  onClick: () {
+                                                    Navigator.push(context,
+                                                        MaterialPageRoute(
+                                                      builder: (context) {
+                                                        return StoryScreen(s);
+                                                      },
+                                                    ));
+                                                  },
+                                                ),
                                               );
                                             }).toList(),
                                           );
