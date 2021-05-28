@@ -17,9 +17,14 @@ class CharacterScreen extends StatefulWidget {
 
 class _CharacterScreenState extends State<CharacterScreen> {
   int charactersMaxLines = 3;
+  double width;
+  double height;
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    width = mediaQueryData.size.width;
+    height = mediaQueryData.size.height;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -56,7 +61,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.bold,
-                            fontSize: 35,
+                            fontSize: 25,
                           ),
                         ),
                       ),
@@ -91,7 +96,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
                 height: 6,
               ),
               Container(
-                height: 570,
+                height: height * 0.8,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -105,7 +110,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: 20,
                             ),
                           ),
                         ],
@@ -179,7 +184,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: 20,
                         ),
                       ),
                       SizedBox(
@@ -257,7 +262,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: 20,
                         ),
                       ),
                       SizedBox(
