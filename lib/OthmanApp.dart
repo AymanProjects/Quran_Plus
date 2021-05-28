@@ -10,9 +10,8 @@ class OthmanApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        primaryColor: Color(0xff9E73D7),
-        primaryColorDark: Color(0xff734DA4),
+        primaryColor: Color(0xff70AD91),
+        primaryColorDark: Color(0xff78B499),
         fontFamily: 'Tajawal',
       ),
       debugShowCheckedModeBanner: false,
@@ -33,25 +32,25 @@ class OthmanApp extends StatelessWidget {
             PersistentBottomNavBarItem(
               icon: Icon(Icons.menu_book_sharp),
               title: "السور",
-              activeColorPrimary: Color(0xff9E73D7),
+              activeColorPrimary: Color(0xff78B499),
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
               icon: Icon(Icons.person),
               title: "الشخصيات",
-              activeColorPrimary: Color(0xff9E73D7),
+              activeColorPrimary: Color(0xff78B499),
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
               icon: Icon(Icons.location_on_rounded),
               title: "الأماكن",
-              activeColorPrimary: Color(0xff9E73D7),
+              activeColorPrimary: Color(0xff78B499),
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
               icon: Icon(Icons.event_sharp),
               title: "الاحداث",
-              activeColorPrimary: Color(0xff9E73D7),
+              activeColorPrimary: Color(0xff78B499),
               inactiveColorPrimary: Colors.grey,
             ),
           ],
