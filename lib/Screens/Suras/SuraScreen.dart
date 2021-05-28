@@ -85,6 +85,7 @@ class _SuraScreenState extends State<SuraScreen> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.w500,
                             fontSize: 30,
                           ),
                         ),

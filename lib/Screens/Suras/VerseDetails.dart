@@ -19,22 +19,21 @@ void showVerseDetails(BuildContext context, Verse verse) {
   showStopper(
       context: context,
       stops: [
-        MediaQuery.of(context).size.height * 0.75,
-        MediaQuery.of(context).size.height * 0.75,
+        MediaQuery.of(context).size.height,
+        MediaQuery.of(context).size.height,
       ],
       builder: (context, scrollController, scrollPhysics, stop) {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter setStopperState) {
           return Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(8), topLeft: Radius.circular(10)),
               color: Theme.of(context).primaryColor,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: ListView(
-                physics: scrollPhysics,
-                controller: scrollController,
+              child: Column(
                 children: [
                   SizedBox(
                     height: 10,
@@ -43,14 +42,17 @@ void showVerseDetails(BuildContext context, Verse verse) {
                     future: QuranAPI.getSura(verse.suraNumber),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        return Text(
-                          "${snapshot.data.name}",
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Text(
+                            "${snapshot.data.name}",
+                            textDirection: TextDirection.rtl,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
                           ),
                         );
                       }
@@ -143,7 +145,7 @@ void showVerseDetails(BuildContext context, Verse verse) {
                     height: 25,
                   ),
                   Container(
-                    height: 500,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     child: PageView(
                       controller: pg,
                       onPageChanged: (int page) {
@@ -152,43 +154,45 @@ void showVerseDetails(BuildContext context, Verse verse) {
                         });
                       },
                       children: [
-                        Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Text(
-                                    "تفسير الآية",
-                                    textDirection: TextDirection.rtl,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
+                        SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Text(
+                                      "تفسير الآية",
+                                      textDirection: TextDirection.rtl,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Icon(
-                                  Icons.chrome_reader_mode_sharp,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              verse.tafseer,
-                              textDirection: TextDirection.rtl,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                          ],
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Icon(
+                                    Icons.chrome_reader_mode_sharp,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                verse.tafseer,
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ],
+                          ),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
