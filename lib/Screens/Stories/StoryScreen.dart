@@ -133,7 +133,7 @@ class _StoryScreenState extends State<StoryScreen> {
                       height: 10,
                     ),
                     Text(
-                      'آيات ذكرت بها الشخصية',
+                      'آيات ذكرت بها القصة',
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.center,
                       style: TextStyle(
