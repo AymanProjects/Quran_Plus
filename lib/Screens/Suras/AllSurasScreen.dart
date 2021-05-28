@@ -38,7 +38,7 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -50,7 +50,7 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
                     fontWeight: FontWeight.w900,
                   )),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               SearchBar(
                 hint: "اسم السورة",

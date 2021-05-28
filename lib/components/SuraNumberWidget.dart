@@ -8,27 +8,24 @@ class SuraNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
-      width: 40,
-      height: 40,
-      child: Container(
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Image.asset(
-                  'assets/SuraNumber.png',
-                  width: 40,
-                ),
-                Text(
-                  suraNumber.toString(),
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-              ],
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(
+            'assets/SuraNumber.png',
+            width: 40,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text(
+              suraNumber.toString(),
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

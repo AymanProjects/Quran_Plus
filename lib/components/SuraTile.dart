@@ -35,33 +35,48 @@ class SuraTile extends StatelessWidget {
               ],
             ),
             Spacer(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  sura.name,
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+            Container(
+              height: 48,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    sura.name,
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '${sura.type}',
-                      textDirection: TextDirection.rtl,
-                    ),
-                    Text(" | "),
-                    Text(
-                      'عدد الايات ${sura.numberOfVerses}',
-                      textDirection: TextDirection.rtl,
-                    ),
-                  ],
-                )
-              ],
+                  SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(
+                        'عدد الايات ${sura.numberOfVerses}',
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          color: Colors.grey[500],
+                        ),
+                      ),
+                      Text(
+                        " | ",
+                        style: TextStyle(
+                          color: Colors.grey[500],
+                        ),
+                      ),
+                      Text(
+                        '${sura.type}',
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          color: Colors.grey[500],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
             SizedBox(width: 10),
             Column(

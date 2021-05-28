@@ -123,7 +123,7 @@ class SuraScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return VerseWidget(
                             verse: verses[index],
-                            fontSize: 30,
+                            fontSize: 26,
                           );
                         },
                       ),
