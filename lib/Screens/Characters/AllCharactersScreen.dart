@@ -13,10 +13,6 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
   List<Character> allCharacters = [];
   List<Character> characters = [];
 
-  double width;
-
-  double height;
-
   void loadCharacters() async {
     await QuranAPI.getAllCharacters().then((value) {
       allCharacters = value;

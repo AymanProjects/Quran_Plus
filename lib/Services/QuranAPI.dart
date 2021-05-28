@@ -49,6 +49,15 @@ class QuranAPI {
     return characters;
   }
 
+  static Future<List<Story>> getAllStories() async {
+    List<Map> json = await db.rawQuery('select * from stories;');
+    List<Story> stories = [];
+    for (int i = 0; i < json.length; i++) {
+      stories.add(Story.fromJson(json[i]));
+    }
+    return stories;
+  }
+
   static Future<Sura> getSura(int suraNumber) async {
     List<Map> json =
         await db.rawQuery('select * from suras where number=$suraNumber;');
@@ -179,6 +188,17 @@ class QuranAPI {
   static Future<List<Verse>> getAllVersesOfLocation(int locationID) async {
     String query =
         'select * from verses,verseLocations where verseLocations.verseNumber=verses.verseNumber AND verseLocations.suraNumber=verses.suraNumber AND verseLocations.locationID=$locationID';
+    List<Map> json = await db.rawQuery(query);
+    List<Verse> verses = [];
+    for (int i = 0; i < json.length; i++) {
+      verses.add(Verse.fromJson(json[i]));
+    }
+    return verses;
+  }
+
+  static Future<List<Verse>> getAllVersesOfStory(int storyID) async {
+    String query =
+        'select * from verses where storyID=$storyID';
     List<Map> json = await db.rawQuery(query);
     List<Verse> verses = [];
     for (int i = 0; i < json.length; i++) {

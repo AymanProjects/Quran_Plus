@@ -68,6 +68,27 @@ void showSuraDetails(BuildContext context, Sura sura) {
                   thickness: 1,
                 ),
                 Text(
+                  "نوع السورة",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  sura.type ?? 'غير معروف',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+                Text(
                   "عدد آيات السورة",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(

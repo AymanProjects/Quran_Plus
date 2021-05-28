@@ -7,9 +7,17 @@ import 'package:othman/models/Story.dart';
 import 'package:othman/models/Sura.dart';
 import 'package:othman/models/Verse.dart';
 
-class CharacterScreen extends StatelessWidget {
+class CharacterScreen extends StatefulWidget {
   final Character character;
   CharacterScreen({this.character});
+
+  @override
+  _CharacterScreenState createState() => _CharacterScreenState();
+}
+
+class _CharacterScreenState extends State<CharacterScreen> {
+  int charactersMaxLines = 3;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,20 +25,66 @@ class CharacterScreen extends StatelessWidget {
           title: Container(
         width: double.infinity,
         child: Text(
-          character.name,
+          widget.character.name,
           textDirection: TextDirection.rtl,
         ),
       )),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
         children: [
-          Text(character.name),
+          Text(widget.character.name),
           Text('ذكر في القران ؟ مرة'),
           EpicDivider(),
-          Text(character.about),
+          Text(
+            'نبذة عن الشخصية',
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 35,
+            ),
+          ),
+          Container(
+            child: Text(
+              widget.character.about,
+              textDirection: TextDirection.rtl,
+              overflow: TextOverflow.ellipsis,
+              maxLines: charactersMaxLines,
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: charactersMaxLines == 3
+                    ? Theme.of(context).scaffoldBackgroundColor
+                    : Colors.transparent,
+                blurRadius: 20,
+                spreadRadius: 20,
+              )
+            ]),
+            child: Center(
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    if (charactersMaxLines == 3)
+                      charactersMaxLines = 1000;
+                    else
+                      charactersMaxLines = 3;
+                  });
+                },
+                icon: Icon(
+                  charactersMaxLines == 3
+                      ? Icons.arrow_drop_down_circle
+                      : Icons.arrow_drop_up_sharp,
+                  size: 30,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            ),
+          ),
           EpicDivider(),
           FutureBuilder(
-            future: QuranAPI.getAllVersesOfCharacter(character.id),
+            future: QuranAPI.getAllVersesOfCharacter(widget.character.id),
             builder: (BuildContext context, snapshot) {
               if (snapshot.hasData) {
                 List<Verse> verses = snapshot.data;
@@ -83,7 +137,7 @@ class CharacterScreen extends StatelessWidget {
           EpicDivider(),
           Text('احداث مرتبطة بالشخصية'),
           FutureBuilder<List<Story>>(
-            future: QuranAPI.getAllStoriesOfCharacter(character.id),
+            future: QuranAPI.getAllStoriesOfCharacter(widget.character.id),
             builder: (BuildContext context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data.isNotEmpty) {

@@ -10,7 +10,10 @@ class OthmanApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.purple,
+        primaryColor: Color(0xff9E73D7),
+        primaryColorDark: Color(0xff734DA4),
+        fontFamily: 'Tajawal',
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(

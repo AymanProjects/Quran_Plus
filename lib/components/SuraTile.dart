@@ -12,38 +12,78 @@ class SuraTile extends StatelessWidget {
       onTap: () {
         onTap(context);
       },
-      child: ListTile(
-        tileColor: Colors.indigoAccent.withOpacity(0.3),
-        title: Row(
+      child: Container(
+        height: 70,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'رقم السورة: ${sura.number}',
-              textDirection: TextDirection.rtl,
-              style: TextStyle(fontSize: 13),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'رقم السورة: ${sura.number}',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(),
+                ),
+              ],
             ),
             Spacer(),
-            Text(
-              sura.name,
-              textDirection: TextDirection.rtl,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  sura.name,
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '${sura.type}',
+                      textDirection: TextDirection.rtl,
+                    ),
+                    Text(
+                      'عدد الايات ${sura.numberOfVerses}',
+                      textDirection: TextDirection.rtl,
+                    ),
+                  ],
+                )
+              ],
             ),
-          ],
-        ),
-        subtitle: Row(
-          children: [
-            InkWell(
-              onTap: () {
-                showSuraDetails(context, sura);
-              },
-              child: Icon(
-                Icons.info_outline_rounded,
-                size: 20,
-              ),
-            ),
-            Spacer(),
-            Text(
-              'عدد الايات: ${sura.numberOfVerses}',
-              textDirection: TextDirection.rtl,
-            ),
+            SizedBox(width: 10),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    showSuraDetails(context, sura);
+                  },
+                  child: Container(
+                    width: 20,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '?',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

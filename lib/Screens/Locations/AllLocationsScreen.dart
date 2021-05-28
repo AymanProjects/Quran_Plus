@@ -13,10 +13,6 @@ class _AllLocationsScreenState extends State<AllLocationsScreen> {
   List<Location> allLocations = [];
   List<Location> locations = [];
 
-  double width;
-
-  double height;
-
   void loadLocations() async {
     await QuranAPI.getAllLocations().then((value) {
       allLocations = value;

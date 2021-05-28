@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:othman/Services/QuranAPI.dart';
 import 'package:othman/components/SearchBar.dart';
 import 'package:othman/models/Sura.dart';
@@ -36,41 +37,49 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          width: double.infinity,
-          child: Text('جميع السور', textDirection: TextDirection.rtl),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          children: [
-            SearchBar(
-              hint: "اسم السورة",
-              onChange: (value) {
-                setState(() {
-                  if (value.isEmpty) {
-                    suras = allSuras;
-                  } else
-                    suras = allSuras
-                        .where((sura) => sura.name.contains(value))
-                        .toList();
-                });
-              },
-            ),
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                children: suras.map((Sura sura) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: SuraTile(sura: sura),
-                  );
-                }).toList(),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('جميع السور',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColorDark,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                  )),
+              SearchBar(
+                hint: "اسم السورة",
+                onChange: (value) {
+                  setState(() {
+                    if (value.isEmpty) {
+                      suras = allSuras;
+                    } else
+                      suras = allSuras
+                          .where((sura) => sura.name.contains(value))
+                          .toList();
+                  });
+                },
               ),
-            )
-          ],
+              Expanded(
+                child: ListView.separated(
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      thickness: 1,
+                      height: 0,
+                    );
+                  },
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  itemCount: suras.length,
+                  itemBuilder: (context, index) {
+                    return SuraTile(sura: suras[index]);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
