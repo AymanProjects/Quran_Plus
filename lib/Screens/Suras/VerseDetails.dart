@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:othman/Screens/Characters/CharacterScreen.dart';
+import 'package:othman/Screens/Locations/LocationScreen.dart';
+import 'package:othman/Screens/Stories/StoryScreen.dart';
 import 'package:othman/Services/QuranAPI.dart';
-import 'package:othman/components/CharacterTile.dart';
-import 'package:othman/components/LocationTile.dart';
+import 'package:othman/components/EpicTile.dart';
 import 'package:othman/models/Character.dart';
 import 'package:othman/models/Sura.dart';
 import 'package:quran/quran.dart';
@@ -274,8 +276,21 @@ void showVerseDetails(BuildContext context, Verse verse) {
                                         return Column(
                                           children:
                                               characters.map((Character char) {
-                                            return CharacterTile(
-                                                character: char);
+                                            return EpicTile(
+                                              Icons.person,
+                                              title: char.name,
+                                              color: Colors.white,
+                                              onClick: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                  builder: (context) {
+                                                    return CharacterScreen(
+                                                      character: char,
+                                                    );
+                                                  },
+                                                ));
+                                              },
+                                            );
                                           }).toList(),
                                         );
                                       else
@@ -337,7 +352,21 @@ void showVerseDetails(BuildContext context, Verse verse) {
                                       if (locations.isNotEmpty)
                                         return Column(
                                           children: locations.map((Location c) {
-                                            return LocationTile(c);
+                                            return EpicTile(
+                                              Icons.location_on_rounded,
+                                              title: c.name,
+                                              color: Colors.white,
+                                              onClick: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                  builder: (context) {
+                                                    return LocationScreen(
+                                                      c,
+                                                    );
+                                                  },
+                                                ));
+                                              },
+                                            );
                                             // return Text("hi");
                                           }).toList(),
                                         );
@@ -400,7 +429,21 @@ void showVerseDetails(BuildContext context, Verse verse) {
                                       if (story.isNotEmpty)
                                         return Column(
                                           children: story.map((Story s) {
-                                            return Text(s.name);
+                                            return EpicTile(
+                                              Icons.bookmark_rounded,
+                                              title: s.name,
+                                              color: Colors.white,
+                                              onClick: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(
+                                                  builder: (context) {
+                                                    return StoryScreen(
+                                                      s,
+                                                    );
+                                                  },
+                                                ));
+                                              },
+                                            );
                                           }).toList(),
                                         );
                                       else

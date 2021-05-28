@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:othman/Screens/Stories/StoryScreen.dart';
-import 'package:othman/models/Story.dart';
 
-class StoryTile extends StatelessWidget {
-  final Story story;
+class EpicTile extends StatelessWidget {
+  final String title;
+  final Color color;
+  final Function onClick;
+  final IconData iconData;
 
-  StoryTile(this.story);
+  EpicTile(this.iconData, {this.title, this.color, this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +16,23 @@ class StoryTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(6),
       ),
       child: InkWell(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) {
-              return StoryScreen(story);
-            },
-          ));
-        },
+        onTap: onClick,
         child: Container(
           padding: EdgeInsets.all(10),
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Theme.of(context).primaryColor,
-                Theme.of(context).primaryColorDark,
-              ],
-            ),
+            color: color != null ? color : null,
+            gradient: color == null
+                ? LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Theme.of(context).primaryColor,
+                      Theme.of(context).primaryColorDark,
+                    ],
+                  )
+                : null,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -43,18 +41,22 @@ class StoryTile extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
-                  'قصة ' + story.name,
+                  title,
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white,
+                    color: color == null
+                        ? Colors.white
+                        : Theme.of(context).primaryColor,
                   ),
                 ),
               ),
               SizedBox(width: 8),
               Icon(
-                Icons.bookmark_rounded,
-                color: Colors.white,
+                iconData,
+                color: color == null
+                    ? Colors.white
+                    : Theme.of(context).primaryColor,
                 size: 24,
               ),
             ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:othman/Screens/Stories/StoryScreen.dart';
 import 'package:othman/Screens/Suras/VerseWidget.dart';
 import 'package:othman/Services/QuranAPI.dart';
-import 'package:othman/components/StoryTile.dart';
+import 'package:othman/components/EpicTile.dart';
 import 'package:othman/models/Character.dart';
 import 'package:othman/models/Story.dart';
 import 'package:othman/models/Sura.dart';
@@ -249,7 +250,17 @@ class _CharacterScreenState extends State<CharacterScreen> {
                           },
                           itemCount: stories.length,
                           itemBuilder: (context, index) {
-                            return StoryTile(stories[index]);
+                            return EpicTile(
+                              Icons.bookmark,
+                              title: stories[index].name,
+                              onClick: () {
+                                Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) {
+                                    return StoryScreen(stories[index]);
+                                  },
+                                ));
+                              },
+                            );
                           },
                         );
                       } else {

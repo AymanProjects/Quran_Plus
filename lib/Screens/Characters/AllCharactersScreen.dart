@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:othman/Services/QuranAPI.dart';
-import 'package:othman/components/CharacterTile.dart';
+import 'package:othman/components/EpicTile.dart';
 import 'package:othman/components/SearchBar.dart';
 import 'package:othman/models/Character.dart';
+
+import 'CharacterScreen.dart';
 
 class AllCharactersScreen extends StatefulWidget {
   @override
@@ -70,7 +72,17 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
                   children: characters.map((Character character) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: CharacterTile(character: character),
+                      child: EpicTile(
+                        Icons.person,
+                        title: character.name,
+                        onClick: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return CharacterScreen(character: character);
+                            },
+                          ));
+                        },
+                      ),
                     );
                   }).toList(),
                 ),

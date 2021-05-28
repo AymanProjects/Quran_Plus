@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:othman/Screens/Locations/LocationScreen.dart';
 import 'package:othman/Services/QuranAPI.dart';
-import 'package:othman/components/LocationTile.dart';
+import 'package:othman/components/EpicTile.dart';
 import 'package:othman/components/SearchBar.dart';
 import 'package:othman/models/Location.dart';
 
@@ -70,7 +71,17 @@ class _AllLocationsScreenState extends State<AllLocationsScreen> {
                   children: locations.map((Location location) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: LocationTile(location),
+                      child: EpicTile(
+                        Icons.location_on_rounded,
+                        title: location.name,
+                        onClick: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return LocationScreen(location);
+                            },
+                          ));
+                        },
+                      ),
                     );
                   }).toList(),
                 ),

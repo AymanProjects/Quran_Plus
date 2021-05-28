@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:othman/Services/QuranAPI.dart';
-import 'package:othman/components/LocationTile.dart';
+import 'package:othman/components/EpicTile.dart';
 import 'package:othman/components/SearchBar.dart';
-import 'package:othman/components/StoryTile.dart';
 import 'package:othman/models/Story.dart';
+
+import 'StoryScreen.dart';
 
 class AllStoriesScreen extends StatefulWidget {
   @override
@@ -71,7 +72,17 @@ class _AllStoriesScreenState extends State<AllStoriesScreen> {
                   children: stories.map((Story story) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: StoryTile(story),
+                      child: EpicTile(
+                        Icons.bookmark,
+                        title: story.name,
+                        onClick: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return StoryScreen(story);
+                            },
+                          ));
+                        },
+                      ),
                     );
                   }).toList(),
                 ),
