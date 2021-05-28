@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:othman/Services/QuranAPI.dart';
 import 'package:othman/components/SearchBar.dart';
 import 'package:othman/models/Sura.dart';
@@ -50,6 +49,9 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
                     fontSize: 22,
                     fontWeight: FontWeight.w900,
                   )),
+              SizedBox(
+                height: 10,
+              ),
               SearchBar(
                 hint: "اسم السورة",
                 onChange: (value) {

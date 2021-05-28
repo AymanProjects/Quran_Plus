@@ -31,23 +31,27 @@ class OthmanApp extends StatelessWidget {
           ],
           items: [
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.local_library_outlined),
+              icon: Icon(Icons.menu_book_sharp),
               title: "السور",
+              activeColorPrimary: Color(0xff9E73D7),
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
               icon: Icon(Icons.person),
               title: "الشخصيات",
+              activeColorPrimary: Color(0xff9E73D7),
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.home_work_rounded),
+              icon: Icon(Icons.location_on_rounded),
               title: "الأماكن",
+              activeColorPrimary: Color(0xff9E73D7),
               inactiveColorPrimary: Colors.grey,
             ),
             PersistentBottomNavBarItem(
-              icon: Icon(Icons.book),
+              icon: Icon(Icons.event_sharp),
               title: "الاحداث",
+              activeColorPrimary: Color(0xff9E73D7),
               inactiveColorPrimary: Colors.grey,
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:othman/Screens/Suras/SuraDetails.dart';
 import 'package:othman/Screens/Suras/SuraScreen.dart';
+import 'package:othman/components/SuraNumberWidget.dart';
 import 'package:othman/models/Sura.dart';
 
 class SuraTile extends StatelessWidget {
@@ -20,10 +21,16 @@ class SuraTile extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'رقم السورة: ${sura.number}',
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(),
+                InkWell(
+                  onTap: () {
+                    showSuraDetails(context, sura);
+                  },
+                  child: Center(
+                    child: Icon(
+                      Icons.info_outline_rounded,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -47,6 +54,7 @@ class SuraTile extends StatelessWidget {
                       '${sura.type}',
                       textDirection: TextDirection.rtl,
                     ),
+                    Text(" | "),
                     Text(
                       'عدد الايات ${sura.numberOfVerses}',
                       textDirection: TextDirection.rtl,
@@ -59,29 +67,9 @@ class SuraTile extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () {
-                    showSuraDetails(context, sura);
-                  },
-                  child: Container(
-                    width: 20,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '?',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                SuraNumber(
+                  suraNumber: sura.number,
+                )
               ],
             )
           ],

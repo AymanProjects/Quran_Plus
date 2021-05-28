@@ -18,10 +18,7 @@ class VerseWidget extends StatelessWidget {
         verse.verse + getVerseEndSymbol(verse.verseNumber),
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: fontSize ?? 23,
-        ),
+        style: TextStyle(color: Colors.black, fontSize: fontSize ?? 23),
       ),
     );
   }
