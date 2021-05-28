@@ -13,6 +13,7 @@ class SuraNumber extends StatelessWidget {
         children: [
           Image.asset(
             'assets/SuraNumber.png',
+            color: Theme.of(context).primaryColor,
             width: 40,
           ),
           Padding(

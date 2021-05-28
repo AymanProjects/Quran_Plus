@@ -7,9 +7,9 @@ void main() async {
   await QuranAPI.init();
   runApp(MaterialApp(
     theme: ThemeData(
-      primarySwatch: Colors.purple,
-      primaryColor: Color(0xff9E73D7),
-      primaryColorDark: Color(0xff734DA4),
+      primarySwatch: Colors.green,
+      primaryColor: Color(0xff78B499),
+      primaryColorDark: Color(0xff669b81),
       fontFamily: 'Tajawal',
     ),
     debugShowCheckedModeBanner: false,

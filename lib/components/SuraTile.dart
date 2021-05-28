@@ -50,7 +50,7 @@ class SuraTile extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  SizedBox(height: 2),
                   Row(
                     children: [
                       Text(

@@ -14,9 +14,6 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
   List<Sura> allSuras = [];
   List<Sura> suras = [];
 
-  double width;
-
-  double height;
 
   void loadSuras() async {
     await QuranAPI.getAllSuras().then((value) {
@@ -67,6 +64,7 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
               ),
               Expanded(
                 child: ListView.separated(
+                  physics: BouncingScrollPhysics(),
                   separatorBuilder: (context, index) {
                     return Divider(
                       thickness: 1,

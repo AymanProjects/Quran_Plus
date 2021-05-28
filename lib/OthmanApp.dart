@@ -13,45 +13,52 @@ class OthmanApp extends StatelessWidget {
       systemNavigationBarColor: Colors.black,
       statusBarColor: Colors.transparent,
     ));
-    return Scaffold(
-      body: PersistentTabView(
-        context,
-        navBarStyle: NavBarStyle.style6,
-        itemAnimationProperties: ItemAnimationProperties(
-          duration: Duration(milliseconds: 100),
+    return NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: (scroll) {
+        scroll.disallowGlow();
+        return true;
+      },
+      child: Scaffold(
+        body: PersistentTabView(
+          context,
+          navBarStyle: NavBarStyle.style6,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          itemAnimationProperties: ItemAnimationProperties(
+            duration: Duration(milliseconds: 100),
+          ),
+          screens: [
+            AllSurasScreen(),
+            AllCharactersScreen(),
+            AllLocationsScreen(),
+            AllStoriesScreen(),
+          ],
+          items: [
+            PersistentBottomNavBarItem(
+              icon: Icon(Icons.menu_book_sharp),
+              title: "السور",
+              activeColorPrimary: Theme.of(context).primaryColorDark,
+              inactiveColorPrimary: Colors.grey,
+            ),
+            PersistentBottomNavBarItem(
+              icon: Icon(Icons.person),
+              title: "الشخصيات",
+              activeColorPrimary: Theme.of(context).primaryColorDark,
+              inactiveColorPrimary: Colors.grey,
+            ),
+            PersistentBottomNavBarItem(
+              icon: Icon(Icons.location_on_rounded),
+              title: "الأماكن",
+              activeColorPrimary: Theme.of(context).primaryColorDark,
+              inactiveColorPrimary: Colors.grey,
+            ),
+            PersistentBottomNavBarItem(
+              icon: Icon(Icons.event_sharp),
+              title: "الاحداث",
+              activeColorPrimary: Theme.of(context).primaryColorDark,
+              inactiveColorPrimary: Colors.grey,
+            ),
+          ],
         ),
-        screens: [
-          AllSurasScreen(),
-          AllCharactersScreen(),
-          AllLocationsScreen(),
-          AllStoriesScreen(),
-        ],
-        items: [
-          PersistentBottomNavBarItem(
-            icon: Icon(Icons.menu_book_sharp),
-            title: "السور",
-            activeColorPrimary: Color(0xff9E73D7),
-            inactiveColorPrimary: Colors.grey,
-          ),
-          PersistentBottomNavBarItem(
-            icon: Icon(Icons.person),
-            title: "الشخصيات",
-            activeColorPrimary: Color(0xff9E73D7),
-            inactiveColorPrimary: Colors.grey,
-          ),
-          PersistentBottomNavBarItem(
-            icon: Icon(Icons.location_on_rounded),
-            title: "الأماكن",
-            activeColorPrimary: Color(0xff9E73D7),
-            inactiveColorPrimary: Colors.grey,
-          ),
-          PersistentBottomNavBarItem(
-            icon: Icon(Icons.event_sharp),
-            title: "الاحداث",
-            activeColorPrimary: Color(0xff9E73D7),
-            inactiveColorPrimary: Colors.grey,
-          ),
-        ],
       ),
     );
   }
