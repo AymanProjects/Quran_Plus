@@ -11,6 +11,7 @@ class OthmanApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.black,
+      statusBarIconBrightness: Brightness.dark,
       statusBarColor: Colors.transparent,
     ));
     return NotificationListener<OverscrollIndicatorNotification>(
