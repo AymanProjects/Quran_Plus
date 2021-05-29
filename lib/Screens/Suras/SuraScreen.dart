@@ -172,6 +172,7 @@ class _SuraScreenState extends State<SuraScreen> {
                   },
                 ),
               ),
+              SizedBox(height: 50),
             ],
           ),
         ),
