@@ -3,17 +3,19 @@ class Verse {
   final int suraNumber;
   final int storyID;
   final int locationID;
-
+  final String reason;
   final String verse;
   final String tafseer;
 
-  Verse(
-      {this.verseNumber,
-      this.suraNumber,
-      this.storyID,
-      this.locationID,
-      this.verse,
-      this.tafseer});
+  Verse({
+    this.verseNumber,
+    this.suraNumber,
+    this.storyID,
+    this.locationID,
+    this.verse,
+    this.tafseer,
+    this.reason,
+  });
 
   factory Verse.fromJson(Map json) {
     if (json == null) return Verse();
@@ -24,6 +26,7 @@ class Verse {
       locationID: json['locationID'],
       verse: json['verse'],
       tafseer: json['tafseer'],
+      reason: json['reason'],
     );
   }
 }

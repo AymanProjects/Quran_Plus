@@ -86,7 +86,8 @@ class _AllStoriesScreenState extends State<AllStoriesScreen> {
                     );
                   }).toList(),
                 ),
-              )
+              ),
+              SizedBox(height: 50),
             ],
           ),
         ),

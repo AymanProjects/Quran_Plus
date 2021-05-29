@@ -86,7 +86,8 @@ class _AllCharactersScreenState extends State<AllCharactersScreen> {
                     );
                   }).toList(),
                 ),
-              )
+              ),
+              SizedBox(height: 50),
             ],
           ),
         ),

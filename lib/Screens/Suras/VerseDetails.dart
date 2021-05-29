@@ -191,37 +191,41 @@ void showVerseDetails(BuildContext context, Verse verse) {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25.0),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Text(
-                                        "تفسير الآية",
-                                        textDirection: TextDirection.rtl,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.chrome_reader_mode_sharp,
-                                      color: Colors.white,
-                                    ),
-                                  ],
+                                Text(
+                                  "تفسير الآية",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: 10,
                                 ),
                                 Text(
                                   verse.tafseer,
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                                SizedBox(height: 30),
+                                Text(
+                                  "سبب نزول الآية",
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  verse.reason ?? 'غير معروف',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),

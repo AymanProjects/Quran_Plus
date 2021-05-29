@@ -85,7 +85,8 @@ class _AllLocationsScreenState extends State<AllLocationsScreen> {
                     );
                   }).toList(),
                 ),
-              )
+              ),
+              SizedBox(height: 50),
             ],
           ),
         ),

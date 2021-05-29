@@ -95,7 +95,7 @@ void showSuraDetails(BuildContext context, Sura sura) {
                             });
                           },
                           child: Icon(
-                            Icons.chrome_reader_mode,
+                            Icons.person,
                             color: pageSelected == 0
                                 ? Colors.white.withOpacity(1)
                                 : Colors.white.withOpacity(0.45),
@@ -109,7 +109,7 @@ void showSuraDetails(BuildContext context, Sura sura) {
                             });
                           },
                           child: Icon(
-                            Icons.person,
+                            Icons.location_on_rounded,
                             color: pageSelected == 1
                                 ? Colors.white.withOpacity(1)
                                 : Colors.white.withOpacity(0.45),
@@ -123,22 +123,8 @@ void showSuraDetails(BuildContext context, Sura sura) {
                             });
                           },
                           child: Icon(
-                            Icons.location_on_rounded,
-                            color: pageSelected == 2
-                                ? Colors.white.withOpacity(1)
-                                : Colors.white.withOpacity(0.45),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setStopperState(() {
-                              pageSelected = 3;
-                              pg.jumpToPage(3);
-                            });
-                          },
-                          child: Icon(
                             Icons.bookmark_rounded,
-                            color: pageSelected == 3
+                            color: pageSelected == 2
                                 ? Colors.white.withOpacity(1)
                                 : Colors.white.withOpacity(0.45),
                           ),
@@ -164,46 +150,7 @@ void showSuraDetails(BuildContext context, Sura sura) {
                         },
                         children: [
                           SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Text(
-                                        "سبب النزول",
-                                        textDirection: TextDirection.rtl,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.chrome_reader_mode,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  sura.reason ?? "لا يوجد",
-                                  style: TextStyle(
-                                      fontSize: 20, color: Colors.white),
-                                )
-                              ],
-                            ),
-                          ),
-                          SingleChildScrollView(
+                            physics: BouncingScrollPhysics(),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -278,6 +225,9 @@ void showSuraDetails(BuildContext context, Sura sura) {
                                     }
                                     return CircularProgressIndicator();
                                   },
+                                ),
+                                SizedBox(
+                                  height: 10,
                                 ),
                               ],
                             ),
