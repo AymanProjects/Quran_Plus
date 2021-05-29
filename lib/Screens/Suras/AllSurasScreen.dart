@@ -77,7 +77,8 @@ class _AllSurasScreenState extends State<AllSurasScreen> {
                     return SuraTile(sura: suras[index]);
                   },
                 ),
-              )
+              ),
+              SizedBox(height: 50),
             ],
           ),
         ),
