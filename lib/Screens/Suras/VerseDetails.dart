@@ -22,7 +22,6 @@ void showVerseDetails(BuildContext context, Verse verse) {
       context: context,
       stops: [
         MediaQuery.of(context).size.height,
-        MediaQuery.of(context).size.height,
       ],
       builder: (context, scrollController, scrollPhysics, stop) {
         return StatefulBuilder(
@@ -176,8 +175,7 @@ void showVerseDetails(BuildContext context, Verse verse) {
                     thickness: 1,
                     height: 25,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
+                  Expanded(
                     child: PageView(
                       controller: pg,
                       onPageChanged: (int page) {
@@ -187,9 +185,13 @@ void showVerseDetails(BuildContext context, Verse verse) {
                       },
                       children: [
                         SingleChildScrollView(
+                          controller: scrollController,
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            padding: const EdgeInsets.only(
+                              right: 25.0,
+                              left: 25,
+                              bottom: 60,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -235,9 +237,13 @@ void showVerseDetails(BuildContext context, Verse verse) {
                           ),
                         ),
                         SingleChildScrollView(
+                          controller: scrollController,
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            padding: const EdgeInsets.only(
+                              right: 25.0,
+                              left: 25,
+                              bottom: 60,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -313,9 +319,13 @@ void showVerseDetails(BuildContext context, Verse verse) {
                           ),
                         ),
                         SingleChildScrollView(
+                          controller: scrollController,
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            padding: const EdgeInsets.only(
+                              right: 25.0,
+                              left: 25,
+                              bottom: 60,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -390,9 +400,13 @@ void showVerseDetails(BuildContext context, Verse verse) {
                           ),
                         ),
                         SingleChildScrollView(
+                          controller: scrollController,
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            padding: const EdgeInsets.only(
+                              right: 25.0,
+                              left: 25,
+                              bottom: 60,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
